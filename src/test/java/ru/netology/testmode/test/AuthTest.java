@@ -36,8 +36,8 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(DataGenerator.getRandomLogin());
         $("[data-test-id='password'] input").setValue(DataGenerator.getRandomPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка"));
-
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
+        ;
     }
 
     @Test
@@ -47,7 +47,8 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Пользователь заблокирован"));
+        $("[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка! Пользователь заблокирован")).shouldBe(Condition.visible);
+        ;
     }
 
     @Test
@@ -58,7 +59,8 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(getRandomLogin());
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
+        ;
     }
 
     @Test
@@ -69,6 +71,7 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(getRandomPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
+        ;
     }
 }
